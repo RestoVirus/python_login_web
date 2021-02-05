@@ -1,0 +1,20 @@
+<div>
+    {% url 'public:index' as index_url%}
+    <span>{% if request.path == index_url %}Home {% else %}<a href="{% url 'public:index'%}">Home</a>{%endif%}</span>
+    {% url 'accounts:customers' as customers_url%}
+    <span>{% if user.is_authenticated%}{% if request.path == customers_url %}Customers {% else %}<a href="{% url 'accounts:customers'%}">Customers</a>{%endif%}{%else%}{%endif%}</span>
+    {% url 'accounts:employee' as employee_url%}
+    <span>{% if request.user.is_superuser %}{% if request.path == employee_url %}Employee {% else %}<a href="{% url 'accounts:employee'%}">Employee</a>{%endif%}{%else%}{%endif%}</span>
+
+
+
+    <span style="float:right">
+        {% if user.is_authenticated%}
+        <span>{{user.username}}</span>
+        <span><a href="{% url 'accounts:logout'%}">Logout</a></span>
+        {%else%}
+        <span><a href="{% url 'accounts:login'%}">Login</a></span>
+        {%endif%}
+    </span>
+
+</div>

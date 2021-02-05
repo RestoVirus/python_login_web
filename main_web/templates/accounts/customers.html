@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} CUSTOMERS{% endblock %}
+{% block content %}customers
+<a href="{% url 'accounts:customersAdd'%}"><button >ADD</button></a>
+<table>
+    {% for customer in customersObjects%}
+    <tr>
+        <td>{{customer.customerName}}</td>
+        <td>{{customer.customerLast}}</td>
+        <td>{{customer.customerEmail}}</td>
+        <td>
+            <form method="delete">
+                <input type="hidden" value="{{customer.pk}}" name="delete-id">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+        <td>
+            
+                <a href="{% url 'accounts:customersEdit' pk=customer.pk %}">
+                <button >Edit</button></a>
+           
+        </td>
+    </tr>
+    {% endfor%}
+
+
+
+
+
+</table>
+
+{% endblock %}  

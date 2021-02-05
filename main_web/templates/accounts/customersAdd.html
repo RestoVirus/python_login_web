@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Customers add{% endblock %}
+{% block content %}
+customers add<br>
+<hr/>
+<form  method="POST">
+    <fieldset>
+        <legend>FORM</legend>
+        {% csrf_token %}
+
+    {{form.as_p}}
+   
+
+<button type="submit">submit</button>
+    </fieldset>
+</form>
+<hr/>
+
+{% endblock %}
+    

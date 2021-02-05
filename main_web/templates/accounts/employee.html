@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} EMPLOYEE{% endblock %}
+{% block content %}
+employee
+<a href="{% url 'accounts:employeeAdd'%}"><button >ADD</button></a>
+<table>
+    {% for employee in EmployeeObject%}
+    <tr>
+        {% if employee.username == "admin" %} 
+        {% else %}
+        <td>{{employee.username}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.last_login}}</td>
+        <td>
+            <span>
+            
+            <form method="delete">
+                <input type="hidden" value="{{employee.pk}}" name="delete-id">
+                <button type="submit">Delete</button>
+            </form>
+           
+        </td>
+        <td>
+            
+            <a href="{% url 'accounts:employeeEdit' pk=employee.pk %}">
+            <button >Change password</button></a>
+       
+        </td>
+        {%endif%}
+    </tr>
+    {% endfor%}
+
+
+
+
+
+</table>
+{% endblock %}
+    
