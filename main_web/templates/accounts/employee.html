@@ -2,29 +2,43 @@
 
 {% block title %} EMPLOYEE{% endblock %}
 {% block content %}
-employee
-<a href="{% url 'accounts:employeeAdd'%}"><button >ADD</button></a>
-<table>
+
+<a href="{% url 'accounts:employeeAdd'%}"><button type="button" class="btn btn-success">ADD EMPLOYEE</button></a>
+<table class="table table-striped table-sm" style="margin: 20px;" >
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Username</th>
+        
+        <th scope="col">LastLogin</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
     {% for employee in EmployeeObject%}
+   
+    
     <tr>
+        
+        
         {% if employee.username == "admin" %} 
         {% else %}
         <td>{{employee.username}}</td>
-        <td>{{employee.email}}</td>
+        
         <td>{{employee.last_login}}</td>
         <td>
             <span>
             
             <form method="delete">
                 <input type="hidden" value="{{employee.pk}}" name="delete-id">
-                <button type="submit">Delete</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
             </form>
            
         </td>
         <td>
             
             <a href="{% url 'accounts:employeeEdit' pk=employee.pk %}">
-            <button >Change password</button></a>
+            <button type="button" class="btn btn-warning">Change password</button></a>
        
         </td>
         {%endif%}
@@ -33,7 +47,7 @@ employee
 
 
 
-
+</tbody>
 
 </table>
 {% endblock %}

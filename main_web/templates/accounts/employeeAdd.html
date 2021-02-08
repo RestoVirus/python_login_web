@@ -2,17 +2,35 @@
 
 {% block title %} Employee add{% endblock %}
 {% block content %}
-employee add<br>
+
 <hr/>
 <form  method="POST">
     <fieldset>
         <legend>FORM</legend>
         {% csrf_token %}
 
-    {{form.as_p}}
-   
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">UserName:</label>
+        {{ form.username }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.password.errors }}
+        <label for="{{ form.password.id_for_label }}">Password:</label>
+        {{ form.password }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.confirm_password.errors }}
+        
+        <label for="{{ form.confirm_password.id_for_label }}">Confirm Password:</label>
+        {{ form.confirm_password }}
+       
+    </div>
+    
+        <button type="submit" class="btn btn-success">submit</button>
 
-<button type="submit">submit</button>
+
     </fieldset>
 </form>
 <hr/>

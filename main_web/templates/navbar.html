@@ -1,20 +1,54 @@
 <div>
-    {% url 'public:index' as index_url%}
-    <span>{% if request.path == index_url %}Home {% else %}<a href="{% url 'public:index'%}">Home</a>{%endif%}</span>
-    {% url 'accounts:customers' as customers_url%}
-    <span>{% if user.is_authenticated%}{% if request.path == customers_url %}Customers {% else %}<a href="{% url 'accounts:customers'%}">Customers</a>{%endif%}{%else%}{%endif%}</span>
-    {% url 'accounts:employee' as employee_url%}
-    <span>{% if request.user.is_superuser %}{% if request.path == employee_url %}Employee {% else %}<a href="{% url 'accounts:employee'%}">Employee</a>{%endif%}{%else%}{%endif%}</span>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">MatousKadula</span>
 
 
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        {% url 'public:index' as index_url%}
+        {% if request.path == index_url %}
+        <li class="nav-item active">
+        {% else %}
+        <li class="nav-item">
+        {%endif%}
+     
+        <a class="nav-link" href="{% url 'public:index'%}">Home</a>
+      </li>
+      {% url 'accounts:customers' as customers_url%}
+        {% if request.path == customers_url %}
+        <li class="nav-item active">
+        {% else %}
+        <li class="nav-item">
+        {%endif%}
+      {% if user.is_authenticated%}
+      
+        <a class="nav-link" href="{% url 'accounts:customers'%}">Customers</a>     
+      </li>
+      {%else%}{%endif%}
+      {% url 'accounts:employee' as employee_url%}
+        {% if request.path == employee_url %}
+        <li class="nav-item active">
+        {% else %}
+        <li class="nav-item">
+        {%endif%}
+      {% if request.user.is_superuser %}
+     
+        <a class="nav-link" href="{% url 'accounts:employee'%}">Employee</a>
+      </li>
+      {%else%}{%endif%}
+   
+    </ul>
+</div>
 
     <span style="float:right">
         {% if user.is_authenticated%}
-        <span>{{user.username}}</span>
-        <span><a href="{% url 'accounts:logout'%}">Logout</a></span>
+        <span>{{user.username}}</span>       
+        <a href="{% url 'accounts:logout'%}"><button type="button" class="btn btn-warning">Logout</button></a>
         {%else%}
-        <span><a href="{% url 'accounts:login'%}">Login</a></span>
+        <a href="{% url 'accounts:login'%}"><button type="button" class="btn btn-success">Login</button></a>
         {%endif%}
     </span>
-
+  
+</nav>
 </div>

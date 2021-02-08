@@ -2,7 +2,7 @@
 
 {% block title %} Customers EDIT{% endblock %}
 {% block content %}
-customers edit<br>
+
 
 <hr/>
 <form  method="POST">
@@ -10,10 +10,28 @@ customers edit<br>
         <legend>FORM</legend>
         {% csrf_token %}
 
-  {{form.as_p}}
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+        {{ form.customerEmail.errors }}
+        <label for="{{ form.customerEmail.id_for_label }}">Customer Email:</label>
+        {{ form.customerEmail }}
+        </div>
+        <div class="fieldWrapper">
+        {{ form.customerLast.errors }}
+        <label for="{{ form.customerLast.id_for_label }}">Customer LastName:</label>
+        {{ form.customerLast }}
+        </div>
+        <div class="fieldWrapper">
+        {{ form.customerName.errors }}
+        <label for="{{ form.customerName.id_for_label }}">Customer FirstName:</label>
+        {{ form.customerName }}
+        </div>
+        <button type="submit" class="btn btn-success">submit</button>
+   
+    
+    
 
 
-<button type="submit">submit</button>
     </fieldset>
 </form>
 <hr/>

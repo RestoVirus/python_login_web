@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
 
 {% block title %} CUSTOMERS{% endblock %}
-{% block content %}customers
-<a href="{% url 'accounts:customersAdd'%}"><button >ADD</button></a>
-<table>
+{% block content %}
+<a href="{% url 'accounts:customersAdd'%}"><button type="button" class="btn btn-success">ADD CUSTOMER</button></a>
+
+<table class="table table-striped table-sm" style="margin: 20px;" >
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Name</th>
+        
+        <th scope="col">Surname</th>
+        <th scope="col">Email</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
     {% for customer in customersObjects%}
     <tr>
         <td>{{customer.customerName}}</td>
@@ -12,13 +24,13 @@
         <td>
             <form method="delete">
                 <input type="hidden" value="{{customer.pk}}" name="delete-id">
-                <button type="submit">Delete</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
             </form>
         </td>
         <td>
             
                 <a href="{% url 'accounts:customersEdit' pk=customer.pk %}">
-                <button >Edit</button></a>
+                <button type="button" class="btn btn-warning">Edit</button></a>
            
         </td>
     </tr>
@@ -27,7 +39,8 @@
 
 
 
-
+</tbody>
 </table>
+
 
 {% endblock %}  
