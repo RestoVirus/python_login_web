@@ -20,9 +20,6 @@ PROJECT_DIR = os.path.join(BASE_DIR, "main_web")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$+ef$)!^ky#a=q_nr4+9&^9-$^@+6g_)0!4q=cu1-$6!)518vw'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
